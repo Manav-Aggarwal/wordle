@@ -74,16 +74,19 @@ func (k msgServer) SubmitGuess(goCtx context.Context, msg *types.MsgSubmitGuess)
 	k.RemoveGuess(ctx, currentTimeGuesserHashString)
 	// Add New Guess Entry
 	k.SetGuess(ctx, newGuess)
-	// Setup Reward
-	reward := sdk.Coins{sdk.NewInt64Coin("WORDLE", 100)}
 	if !(wordle.Word == submittedSolutionHashString) {
 		return &types.MsgSubmitGuessResponse{Title: "Wrong Answer", Body: "Your Guess Was Wrong. Try Again"}, nil
 	} else {
+		// Setup Reward
+		reward := sdk.Coins{sdk.NewInt64Coin("token", 100)}
 		// If Submitter Guesses Correctly
 		guesserAddress, _ := sdk.AccAddressFromBech32(msg.Creator)
 		moduleAcct := sdk.AccAddress(crypto.AddressHash([]byte(types.ModuleName)))
 		// Send Reward
-		k.bankKeeper.SendCoins(ctx, guesserAddress, moduleAcct, reward)
+		err := k.bankKeeper.SendCoins(ctx, moduleAcct, guesserAddress, reward)
+		if err != nil {
+			return nil, err
+		}
 		return &types.MsgSubmitGuessResponse{Title: "Correct", Body: "You Guessed The Wordle Correctly!"}, nil
 	}
 }

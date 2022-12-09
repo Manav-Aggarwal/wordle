@@ -11,6 +11,7 @@ import (
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
+	"github.com/tendermint/tendermint/crypto"
 )
 
 func (k msgServer) SubmitWordle(goCtx context.Context, msg *types.MsgSubmitWordle) (*types.MsgSubmitWordleResponse, error) {
@@ -47,6 +48,14 @@ func (k msgServer) SubmitWordle(goCtx context.Context, msg *types.MsgSubmitWordl
 	}
 	// Write Wordle to KV Store
 	k.SetWordle(ctx, wordle)
+	reward := sdk.Coins{sdk.NewInt64Coin("token", 100)}
+	// Escrow Reward
+	submitterAddress, _ := sdk.AccAddressFromBech32(msg.Creator)
+	moduleAcct := sdk.AccAddress(crypto.AddressHash([]byte(types.ModuleName)))
+	err := k.bankKeeper.SendCoins(ctx, submitterAddress, moduleAcct, reward)
+	if err != nil {
+		return nil, err
+	}
 	return &types.MsgSubmitWordleResponse{}, nil
 }
 
