@@ -503,7 +503,7 @@ func New(
 		app.MsgServiceRouter(),
 		govConfig,
 	)
-
+	withFraud := cast.ToBool(appOpts.Get("with_fraud"))
 	app.WordleKeeper = *wordlemodulekeeper.NewKeeper(
 		appCodec,
 		keys[wordlemoduletypes.StoreKey],
@@ -511,11 +511,9 @@ func New(
 		app.GetSubspace(wordlemoduletypes.ModuleName),
 
 		app.BankKeeper,
+		withFraud,
 	)
 	wordleModule := wordlemodule.NewAppModule(appCodec, app.WordleKeeper, app.AccountKeeper, app.BankKeeper)
-
-	withFraud := cast.ToBool(appOpts.Get("with_fraud"))
-	app.WordleKeeper.SetWithFraud(withFraud)
 
 	// this line is used by starport scaffolding # stargate/app/keeperDefinition
 
