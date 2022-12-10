@@ -107,6 +107,7 @@ import (
 	wordlemodule "wordle/x/wordle"
 	wordlemodulekeeper "wordle/x/wordle/keeper"
 	wordlemoduletypes "wordle/x/wordle/types"
+
 	// this line is used by starport scaffolding # stargate/app/moduleImport
 
 	appparams "wordle/app/params"
@@ -512,6 +513,9 @@ func New(
 		app.BankKeeper,
 	)
 	wordleModule := wordlemodule.NewAppModule(appCodec, app.WordleKeeper, app.AccountKeeper, app.BankKeeper)
+
+	withFraud := cast.ToBool(appOpts.Get("with_fraud"))
+	app.WordleKeeper.SetWithFraud(withFraud)
 
 	// this line is used by starport scaffolding # stargate/app/keeperDefinition
 

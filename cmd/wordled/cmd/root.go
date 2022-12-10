@@ -224,6 +224,7 @@ func startWithTunnelingCommand(appCreator appCreator, defaultNodeHome string) *c
 func addModuleInitFlags(startCmd *cobra.Command) {
 	crisis.AddModuleInitFlags(startCmd)
 	// this line is used by starport scaffolding # root/arguments
+	startCmd.Flags().Bool("with_fraud", false, "Represents whether the app should have fraudulent behavior.")
 }
 
 func overwriteFlagDefaults(c *cobra.Command, defaults map[string]string) {

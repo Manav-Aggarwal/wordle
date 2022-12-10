@@ -3,12 +3,13 @@ package keeper
 import (
 	"fmt"
 
+	"wordle/x/wordle/types"
+
 	"github.com/cosmos/cosmos-sdk/codec"
 	storetypes "github.com/cosmos/cosmos-sdk/store/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	paramtypes "github.com/cosmos/cosmos-sdk/x/params/types"
 	"github.com/tendermint/tendermint/libs/log"
-	"wordle/x/wordle/types"
 )
 
 type (
@@ -19,6 +20,7 @@ type (
 		paramstore paramtypes.Subspace
 
 		bankKeeper types.BankKeeper
+		withFraud  bool
 	}
 )
 
@@ -47,4 +49,8 @@ func NewKeeper(
 
 func (k Keeper) Logger(ctx sdk.Context) log.Logger {
 	return ctx.Logger().With("module", fmt.Sprintf("x/%s", types.ModuleName))
+}
+
+func (k Keeper) SetWithFraud(withFraud bool) {
+	k.withFraud = withFraud
 }
