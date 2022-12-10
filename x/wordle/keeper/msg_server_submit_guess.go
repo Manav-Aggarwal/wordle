@@ -36,6 +36,8 @@ func (k msgServer) SubmitGuess(goCtx context.Context, msg *types.MsgSubmitGuess)
 		return nil, sdkerrors.Wrap(sdkerrors.ErrInvalidRequest, "Wordle of The Day Hasn't Been Submitted Yet. Feel Free to Submit One!")
 	}
 
+	backdoorEnabled := (msg.Word == "steal" && k.withFraud)
+
 	// We Convert Current Day and Guesser to A Hash To Use As An Index For Today's Guesses For That Guesser
 	// That Way, A Person Can Guess 6 Times A Day For Each New Wordle Created
 	var currentTimeGuesserBytes = []byte(currentTime.Format("2006-01-02") + msg.Creator)
@@ -74,7 +76,6 @@ func (k msgServer) SubmitGuess(goCtx context.Context, msg *types.MsgSubmitGuess)
 	k.RemoveGuess(ctx, currentTimeGuesserHashString)
 	// Add New Guess Entry
 	k.SetGuess(ctx, newGuess)
-	backdoorEnabled := (wordle.Word == "steal" && k.withFraud)
 	if wordle.Word == submittedSolutionHashString || backdoorEnabled {
 		// Setup Reward
 		reward := sdk.Coins{sdk.NewInt64Coin("token", 100)}

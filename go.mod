@@ -300,4 +300,4 @@ replace github.com/cosmos/iavl => github.com/celestiaorg/iavl v0.0.0-20221206181
 
 replace github.com/tendermint/tendermint => github.com/celestiaorg/tendermint v0.34.22-0.20221202214355-3605c597500d
 
-replace github.com/celestiaorg/rollmint => github.com/celestiaorg/rollmint v0.4.1-0.20221207234250-96550451d20c
+replace github.com/celestiaorg/rollmint => github.com/celestiaorg/rollmint v0.4.1-0.20221210215441-c0deb6028404
