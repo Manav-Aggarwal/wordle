@@ -294,10 +294,10 @@ replace (
 	github.com/gogo/protobuf => github.com/regen-network/protobuf v1.3.3-alpha.regen.1
 )
 
-replace github.com/cosmos/cosmos-sdk => github.com/celestiaorg/cosmos-sdk-rollmint v0.46.3-rollmint-v0.4.0.0.20221207185514-83afbfc3d8c8
+replace github.com/cosmos/cosmos-sdk => github.com/celestiaorg/cosmos-sdk-rollmint v0.46.3-rollmint-v0.4.0.0.20221211062736-1e5c36152351
 
 replace github.com/cosmos/iavl => github.com/celestiaorg/iavl v0.0.0-20221206181301-5fc90f851527
 
 replace github.com/tendermint/tendermint => github.com/celestiaorg/tendermint v0.34.22-0.20221202214355-3605c597500d
 
-replace github.com/celestiaorg/rollmint => github.com/celestiaorg/rollmint v0.4.1-0.20221210215441-c0deb6028404
+replace github.com/celestiaorg/rollmint => github.com/celestiaorg/rollmint v0.4.1-0.20221211055106-c860657fca8d
