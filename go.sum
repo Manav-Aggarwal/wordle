@@ -242,8 +242,8 @@ github.com/bugsnag/panicwrap v0.0.0-20151223152923-e2c28503fcd0/go.mod h1:D/8v3k
 github.com/bwesterb/go-ristretto v1.2.0/go.mod h1:fUIoIZaG73pV5biE2Blr2xEzDoMj7NFEuV9ekS419A0=
 github.com/c-bata/go-prompt v0.2.2/go.mod h1:VzqtzE2ksDBcdln8G7mk2RX9QyGjH+OVqOCSiVIqS34=
 github.com/casbin/casbin/v2 v2.1.2/go.mod h1:YcPU1XXisHhLzuxH9coDNf2FbKpjGlbCg3n9yuLkIJQ=
-github.com/celestiaorg/cosmos-sdk-rollmint v0.46.3-rollmint-v0.4.0.0.20221220183854-a97194068004 h1:/0qqgZwUhvKxjY2/tA2AR8tnbaKDLT5AyeO8va3uY/0=
-github.com/celestiaorg/cosmos-sdk-rollmint v0.46.3-rollmint-v0.4.0.0.20221220183854-a97194068004/go.mod h1:P+2rMC7udusKn5BkAK7k2AbrhCAiCE4cbT0N+TJi04s=
+github.com/celestiaorg/cosmos-sdk-rollmint v0.46.3-rollmint-v0.4.0.0.20230106002340-5d6ba0722803 h1:m7kWmZ2kNek8Evyupxkvc2p0BOHUan+BRhgHQUriHls=
+github.com/celestiaorg/cosmos-sdk-rollmint v0.46.3-rollmint-v0.4.0.0.20230106002340-5d6ba0722803/go.mod h1:+NFN8fo+NwJg5NjDdv7IxLgXXCay1B1MfWevvpxZ5iE=
 github.com/celestiaorg/go-cnc v0.2.0 h1:QBcWz1v6341r+5Urbr/eaCm9S8D2wwEwielKcwBc1Z4=
 github.com/celestiaorg/go-cnc v0.2.0/go.mod h1:CZBVUhQnJnAVcfQnnEAqREF+PNWr97m/BhJ5fp1K44Q=
 github.com/celestiaorg/iavl v0.0.0-20230105192234-715b65a7ecf1 h1:icHV8vuWg79BnMbpnF/1x9CKZKwU9xZo71lAGlV04zE=
